@@ -38,8 +38,10 @@ router.get('/', async function(req, res, next) {
             "family_name": "Doe",
             "nonce": "` + req.query.nonce + `",
             "iss": "https://thebookclub.com/",
+            "https://purl.imsglobal.org/spec/lti/claim/deployment_id" : "deploymentid01",
             "aud": ["clientid01"]
         }`;
+
         
         var token = jwt.sign(dataFull, myKey.key.toPrivateKeyPEM(), { 
             keyid : myKey.kid,
@@ -47,12 +49,10 @@ router.get('/', async function(req, res, next) {
         });
         var url = 'https://api-prod-2belive.2belive.net/lti/callback?state=' + req.query.state;
         
-        var headers = {'cookie' : "LEGACY_lti1p3_"+req.query.state+"="+req.query.state+"; "
-        + "lti1p3_"+req.query.state+"="+req.query.state+"; "};
         //,  { 'headers' : headers }
-        var body = {id_token: token};
-        console.log(url);
-        console.log(body);
+        console.log(url);        
+        const params = new URLSearchParams()
+        params.append('id_token', token)
 
         const CancelToken = axios.CancelToken;
         const source = CancelToken.source();
@@ -61,9 +61,15 @@ router.get('/', async function(req, res, next) {
           // Timeout Logic
         },  30*1000);
         
+        var headers = {
+            'cookie' : "LEGACY_lti1p3_"+req.query.state+"="+req.query.state+"; lti1p3_"+req.query.state+"="+req.query.state+"; ",
+            'Content-Type': 'application/x-www-form-urlencoded'
+        };
+        
+        var config = { headers : headers, cancelToken: source.token};
 
 
-        await axios.post(url, body, { headers : headers, cancelToken: source.token})
+        await axios.post(url, params, config)
         .then(function (response) {
             console.log("response");
             res.status(200).send('Response is okay');
