@@ -39,7 +39,8 @@ router.get('/', async function(req, res, next) {
             "nonce": "` + req.query.nonce + `",
             "iss": "https://thebookclub.com/",
             "https://purl.imsglobal.org/spec/lti/claim/deployment_id" : "deploymentid01",
-            "aud": ["clientid01"]
+            "aud": ["clientid01"],
+            "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
         }`;
 
         
