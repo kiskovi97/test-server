@@ -42,7 +42,7 @@ router.get('/', async function(req, res, next) {
         const timeout = setTimeout(() => {
           source.cancel();
           // Timeout Logic
-        },  30*1000);
+        },  10*1000);
         
 
 
