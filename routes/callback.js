@@ -4,6 +4,20 @@ var router = express.Router();
 var jwt = require("jsonwebtoken");
 var axios = require('axios').default;
 
+var ppCode = {
+    "p": "xtxHvr0QO7RxJTZO4cNy0FSChMWTdeN12onPraVEgwmegF77MFfOLY9XVS0mkEilCU-XMzdzzrxUW-DUf-mFEaQCaxDC8_wdJvXnQLLfnUIkdwn0L_PF0EK_hf3YkLEKRO6viCKqsLeCVo3OtVqM9L2IvQqMGgC2AJM9XwgDc8c",
+    "kty": "RSA",
+    "q": "raXFpyoOTilY7F68PJUctANspO1GjiXjY_zX8LIGwZR930LMQ2QcmXYnz5rwn90h2mDUGSsTyozFVxiFIf-HkR7iDfLbDhibFtM842dtwQsAWQ9-etMRnd5mqBR0jpgowhKRzff9j2-hhUIb-c8K-MsND7x8107SHccZHje-DGk",
+    "d": "aqaGiodECq8C4ltYmwrumwh08oah74XO330l3Ekpv1jYEMzqpHDSy3L0PjPFoID_5s9u3bJJVYOWeMPyWXS_tWLPrXxaZpOldgsBp-VzRN4KuGvudURpddSXszI_iYMfYqhAzbKlpqnoDoHyE-9k_KLvsfAxPPNdsZwTDD4Ff0-zqgQuPs0P7v8Hathzk_bpdyNy7-lTpjURSpKk1S48AZkAVyA7tEejgEjXPUbBDQcowPmgGbMLh-52U65cOdqFzdkz7esemtZuFJvc5pa935mVb9Gl54GH61lkWOCy9bZ7Zh2qqZcO6RE6KRyK72CLmIGW0Rle8QOj_tyiTLBd8Q",
+    "e": "AQAB",
+    "kid": "2020-05-18T22:33:20Z",
+    "qi": "kQmKod740MJPhcwGjcUcES1eO5iN1aYGw4hPJu3AhRyrcnoj16toKQsSTxkmhAP1ncdwAySsBoabZGzwRAWfuGrCzUxERmoPTXszzcah77SwztX88MYihXpSMhUE7EgkYle5oCOxfZ-i2lToyA0tJiWM2y2XvRaW1mgnyGwW2xw",
+    "dp": "UoJjYkify6X6rC30XMfzg20NGnm_zVIrPBmiCbJg0t3S3gCKyGwmJ9EpszWgoo0BrPNREPcZHdYWSmjmwovpooAiYLn7qbAZiGjPIpEVJvKinqGKp7rFgLuxK68_hAlw8Vj3i8yWdewuMCt2cNi5U3KwoX8W0lMpMOPmut9gT1E",
+    "alg": "RS256",
+    "dq": "lE8vf1S2Hx_FaSyIjR22BDGgi0R0rFfD3NRJArSqfI986kC9ARnyK0f1PKVSutc9YKyuukhGgQq2SWsR2jXK7bF41P0FBwcQ_u-v43GlFel1hJttJS48r58SAqBl5Jwkw4zkpwwVrnpjc9NA3Z1t-4xBPZ146tPRNcmktGBbm3E",
+    "n": "huOh_4FHqUKy9dGfqbKcYBjmW-FzUO2wCkGqWW1tLowKGz8fHebolqc7sQMOq2rb-mdzoxrvgLfsavF-0FW7kLvDO9gPjBtZwHpTCzSbXAC6qbLBWJT1ZN6lBTO5r6bMpxWuWAG3T_-tb-B2hWjgMsmfOHvX7bkoLPyZaa_OG6D5AUI1PTkkQZJaKDCGXpSc2nc-Tp2pMGB6w2cCVw1hONnjsjQ8PYgnocFdATFCsWfDv-yXNvmrlwBnvIWHLHIn2rIWuWWZum7SGoKlDRMoPA6XQuihEcka3gUIa-qjYZKkBU6FdvViMsA3Lsq8Bux1hSH3p3sqlRnr7FEcIYnQnw"
+};
+
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
     try {
@@ -23,10 +37,9 @@ router.get('/', async function(req, res, next) {
             "aud": ["clientid01"]
         }`;
 
-        var secret = "J821v0PKKqDjIZHesJIFRy24xJtypOzszXwcGLrC6e63PL7dppwO0ydgEcxZIrw2yQXfBD1GNpwamo9cPYIxTHgj81XW45Tcl2v-Y5xGPzLzBtBVXBAwhYQfPFDXKh31Q_UKbCG3Bn-H1sm6wW84I3gvpK-aQqnzCVgpjLSJ9A2TcT0BPpehBzFv7TOpjbHLgc6RnEVB9Uq7wrUZ03LCps-ULHdZ3jn-SaJrFJsnYWJ8LLQy0SGHNfyO9zGXYzbILJB9rE-qaKDW9UXj3pppdYh2lUH9S4lYVtQC4GVFWFsXDSwTQpAP8ESbbUh9e_RsKLQtCiD7RjDVmjXw7EfyuA";
-        var token = jwt.sign(dataFull, secret, { 
-            keyid : "2020-05-18T22:33:20Z",
-            algorithm: 'HS256'
+        var token = jwt.sign(dataFull, ppCode.d, { 
+            keyid : ppCode.kid,
+            algorithm: ppCode.alg
         });
         var url = 'https://api-prod-2belive.2belive.net/lti/callback?state=' + req.query.state;
 

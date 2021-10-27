@@ -1,13 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
+var publickKey = {
+    "kty": "RSA",
+    "e": "AQAB",
+    "kid": "2020-05-18T22:33:20Z",
+    "alg": "RS256",
+    "n": "huOh_4FHqUKy9dGfqbKcYBjmW-FzUO2wCkGqWW1tLowKGz8fHebolqc7sQMOq2rb-mdzoxrvgLfsavF-0FW7kLvDO9gPjBtZwHpTCzSbXAC6qbLBWJT1ZN6lBTO5r6bMpxWuWAG3T_-tb-B2hWjgMsmfOHvX7bkoLPyZaa_OG6D5AUI1PTkkQZJaKDCGXpSc2nc-Tp2pMGB6w2cCVw1hONnjsjQ8PYgnocFdATFCsWfDv-yXNvmrlwBnvIWHLHIn2rIWuWWZum7SGoKlDRMoPA6XQuihEcka3gUIa-qjYZKkBU6FdvViMsA3Lsq8Bux1hSH3p3sqlRnr7FEcIYnQnw"
+}
+
 /* GET webjks */
 router.get('/', function(req, res, next) {
-    res.send('{ "keys" : [ {'
-        +'"kty": "oct",'
-        +'"kid": "2020-05-18T22:33:20Z",'
-        +'"k": "J821v0PKKqDjIZHesJIFRy24xJtypOzszXwcGLrC6e63PL7dppwO0ydgEcxZIrw2yQXfBD1GNpwamo9cPYIxTHgj81XW45Tcl2v-Y5xGPzLzBtBVXBAwhYQfPFDXKh31Q_UKbCG3Bn-H1sm6wW84I3gvpK-aQqnzCVgpjLSJ9A2TcT0BPpehBzFv7TOpjbHLgc6RnEVB9Uq7wrUZ03LCps-ULHdZ3jn-SaJrFJsnYWJ8LLQy0SGHNfyO9zGXYzbILJB9rE-qaKDW9UXj3pppdYh2lUH9S4lYVtQC4GVFWFsXDSwTQpAP8ESbbUh9e_RsKLQtCiD7RjDVmjXw7EfyuA",'
-        +'"alg": "HS256"'
-    +'} ] }')});
+    res.send({keys: [publickKey]})});
 
 module.exports = router;
