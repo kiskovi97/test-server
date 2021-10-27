@@ -41,6 +41,14 @@ router.get('/', async function(req, res, next) {
             "https://purl.imsglobal.org/spec/lti/claim/deployment_id" : "deploymentid01",
             "aud": ["clientid01"],
             "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
+            "https://purl.imsglobal.org/spec/lti/claim/target_link_uri" : "https://go.2belive.net/thebookclub",
+            
+            "https://purl.imsglobal.org/spec/lti/claim/version": "1.3.0",
+            "https://purl.imsglobal.org/spec/lti/claim/roles": [
+              "http://purl.imsglobal.org/vocab/lis/v2/institution/person#Student",
+              "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner",
+              "http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor"
+            ],
         }`;
 
         
