@@ -9,7 +9,7 @@ router.get('/', async function(req, res, next) {
     try {
         console.log(req.query);
         if (!req.query.nonce){
-            res.status(400).send( req.query.login_hint);
+            res.status(400).send( { error: "nonce is missing"});
             return
         }
 
