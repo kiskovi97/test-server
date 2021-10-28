@@ -39,7 +39,7 @@ router.get('/', async function(req, res, next) {
             "nonce": "` + req.query.nonce + `",
             "iss": "https://kiskovi-test-server.herokuapp.com",
             "https://purl.imsglobal.org/spec/lti/claim/deployment_id" : "deploymentid01",
-            "aud": ["clientid01"],
+            "aud": "clientid01",
             "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
             "https://purl.imsglobal.org/spec/lti/claim/target_link_uri" : "https://go.2belive.net/thebookclub",
             
