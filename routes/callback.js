@@ -56,7 +56,7 @@ router.get('/', async function(req, res, next) {
             keyid : myKey.kid,
             algorithm: myKey.alg
         });
-        var url = 'https://api-prod-2belive.2belive.net/lti/callback?state=' + req.query.state;
+        var url = 'https://api-prod-2belive.2belive.net/lti/callback?company_id=312&state=' + req.query.state;
         
         //,  { 'headers' : headers }
         console.log(url);        
