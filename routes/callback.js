@@ -31,7 +31,10 @@ router.get('/', async function(req, res, next) {
             return
         }
 
-        var dataFull = `{
+        console.log(req.headers);
+        console.log(req.cookies);
+
+        var dataFull = {
             "email": "gergely.richter@bookrkids.hu",
             "name": "Ms Jane Marie Doe",
             "given_name": "Jane",
@@ -49,7 +52,7 @@ router.get('/', async function(req, res, next) {
               "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner",
               "http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor"
             ],
-        }`;
+        };
 
         
         var token = jwt.sign(dataFull, myKey.key.toPrivateKeyPEM(), { 
