@@ -32,6 +32,8 @@ router.get('/', async function(req, res, next) {
         }
 
         console.log(req.headers);
+        console.log(req.rawHeaders);
+        console.log(req.body);
         console.log(req.cookies);
 
         var dataFull = {
@@ -59,7 +61,7 @@ router.get('/', async function(req, res, next) {
             keyid : myKey.kid,
             algorithm: myKey.alg
         });
-        var url = 'https://api-prod-2belive.2belive.net/lti/callback?company_id=312&state=' + req.query.state;
+        var url = req.query.redirect_uri+'&state=' + req.query.state;
         
         //,  { 'headers' : headers }
         console.log(url);        
