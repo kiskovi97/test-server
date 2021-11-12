@@ -37,13 +37,13 @@ router.get('/', async function(req, res, next) {
         console.log(req.cookies);
 
         var dataFull = {
-            "email": "gergo.kovacs@bookrkids.hu",
-            "name": "Kovács-Test Gergő",
+            "email": "kiskovi97@gmail.com",
+            "name": "Kovács-Gmail Gergő",
             "given_name": "Gergő",
-            "family_name": "Kovács-Test",
-            "nonce": "` + req.query.nonce + `",
+            "family_name": "Kovács-Gmail",
+            "nonce":  req.query.nonce,
             "iss": "https://kiskovi-test-server.herokuapp.com",
-            "sub" : "gergo.kovacs@bookrkids.hu",
+            "sub" : "kiskovi97@gmail.com",
             "https://purl.imsglobal.org/spec/lti/claim/deployment_id" : "deploymentid01",
             "aud": "clientid01",
             
@@ -93,8 +93,7 @@ router.get('/', async function(req, res, next) {
         await axios.post(url, params, config)
         .then(function (response) {
             console.log({"responseUrl" : response.request?.res?.responseUrl});
-            console.log({"_currentUrl" : response.request?._redirectable?._currentUrl});
-            console.log({"data" : response.data});
+            //console.log({"data" : response.data});
             res.status(200).send({"url" : response.request?.res?.responseUrl});
         })
         .catch(function (error) {
