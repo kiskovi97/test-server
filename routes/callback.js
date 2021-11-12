@@ -36,14 +36,17 @@ router.get('/', async function(req, res, next) {
         console.log(req.body);
         console.log(req.cookies);
 
+        
+        var query = global[req.query.login_hint];
+
         var dataFull = {
-            "email": "kiskovi97@gmail.com",
+            "email": query.email,
             "name": "Kovács-Gmail Gergő",
             "given_name": "Gergő",
             "family_name": "Kovács-Gmail",
             "nonce":  req.query.nonce,
             "iss": "https://kiskovi-test-server.herokuapp.com",
-            "sub" : "kiskovi97@gmail.com",
+            "sub" : query.email,
             "https://purl.imsglobal.org/spec/lti/claim/deployment_id" : "deploymentid01",
             "aud": "clientid01",
             
