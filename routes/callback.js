@@ -25,18 +25,14 @@ const myKey = njwk.JWK.fromObject(myJSONString);
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
     try {
-        console.log(req.query);
+        console.log({query : req.query});
         if (!req.query.nonce){
             res.status(500).send( { error: "nonce is missing"});
             return
         }
 
-        console.log(req.headers);
-        console.log(req.rawHeaders);
-        console.log(req.body);
-        console.log(req.cookies);
+        console.log({headers : req.headers});
 
-        
         var query = global[req.query.login_hint];
         global[req.query.login_hint] = undefined;
         var dataFull = {
@@ -72,7 +68,7 @@ router.get('/', async function(req, res, next) {
         var url = req.query.redirect_uri +'&state=' + req.query.state;
         
         //,  { 'headers' : headers }
-        console.log(url);        
+        console.log({url : url});        
         const params = new URLSearchParams()
         params.append('id_token', token)
 
@@ -94,6 +90,8 @@ router.get('/', async function(req, res, next) {
         await axios.post(url, params, config)
         .then(function (response) {
             console.log({"responseUrl" : response.request?.res?.responseUrl});
+            console.log({"responseData" : response.data});
+            console.log({"responseFull" : response});
             //console.log({"data" : response.data});
             res.status(200).send({"url" : response.request?.res?.responseUrl});
         })
