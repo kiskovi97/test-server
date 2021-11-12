@@ -92,8 +92,8 @@ router.get('/', async function(req, res, next) {
 
         await axios.post(url, params, config)
         .then(function (response) {
-            console.log("response");
-            res.status(200).send('Response is okay');
+            console.log(response);
+            res.status(200).send(response.body);
         })
         .catch(function (error) {
             console.log("Error recived: ");
