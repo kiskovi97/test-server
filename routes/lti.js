@@ -13,8 +13,8 @@ router.post('/', async function(req, res, next) {
         var url = "https://api-prod-2belive.2belive.net/lti/login?company_id=312";
         var config = { headers: {"Content-Type" : "application/json","Accept": "application/json"} };
 
-        console.log(req.data);
-        global[body.login_hint] = req.data;
+        console.log(req.body);
+        global[body.login_hint] = req.body;
 
         await axios.post(url, body, config)
         .then(function (response) {
