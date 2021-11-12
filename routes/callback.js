@@ -41,9 +41,7 @@ router.get('/', async function(req, res, next) {
 
         var dataFull = {
             "email": query.email,
-            "name": "Kovács-Gmail Gergő",
-            "given_name": "Gergő",
-            "family_name": "Kovács-Gmail",
+            "name": query.name,
             "nonce":  req.query.nonce,
             "iss": "https://kiskovi-test-server.herokuapp.com",
             "sub" : query.email,
@@ -58,11 +56,11 @@ router.get('/', async function(req, res, next) {
             ],
 
             "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
-            "https://purl.imsglobal.org/spec/lti/claim/target_link_uri" : "https://go.2belive.net/thebookclub/open/session-with-link/23510",
+            "https://purl.imsglobal.org/spec/lti/claim/target_link_uri" : query.target_link_uri, //"https://go.2belive.net/thebookclub/open/session-with-link/23510",
             "https://purl.imsglobal.org/spec/lti/claim/resource_link": {
-                "id": "23510",
-                "description": "This is a Live Session Test for LTI",
-                "title": "Live Session Test Resource Link"
+                "id": query.target_link_id,// "23510",
+                "description": query.target_link_description,//"This is a Live Session Test for LTI",
+                "title": query.target_link_title,//"Live Session Test Resource Link"
             },
         };
 
