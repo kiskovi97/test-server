@@ -93,7 +93,7 @@ router.get('/', async function(req, res, next) {
         await axios.post(url, params, config)
         .then(function (response) {
             console.log(response);
-            res.status(200).send(response.body);
+            res.status(200).send(response);
         })
         .catch(function (error) {
             console.log("Error recived: ");
