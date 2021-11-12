@@ -46,8 +46,6 @@ router.get('/', async function(req, res, next) {
             "sub" : "gergely.richter@bookrkids.hu",
             "https://purl.imsglobal.org/spec/lti/claim/deployment_id" : "deploymentid01",
             "aud": "clientid01",
-            "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
-            "https://purl.imsglobal.org/spec/lti/claim/target_link_uri" : "https://go.2belive.net/thebookclub",
             
             "https://purl.imsglobal.org/spec/lti/claim/version": "1.3.0",
             "https://purl.imsglobal.org/spec/lti/claim/roles": [
@@ -55,6 +53,14 @@ router.get('/', async function(req, res, next) {
               "http://purl.imsglobal.org/vocab/lis/v2/membership#Learner",
               "http://purl.imsglobal.org/vocab/lis/v2/membership#Mentor"
             ],
+
+            "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
+            "https://purl.imsglobal.org/spec/lti/claim/target_link_uri" : "https://go.2belive.net/thebookclub/open/session-with-link/23510",
+            "https://purl.imsglobal.org/spec/lti/claim/resource_link": {
+                "id": "23510",
+                "description": "This is a Live Session Test for LTI",
+                "title": "Live Session Test Resource Link"
+            },
         };
 
         
