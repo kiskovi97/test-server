@@ -92,10 +92,10 @@ router.get('/', async function(req, res, next) {
 
         await axios.post(url, params, config)
         .then(function (response) {
-            console.log(response.request.res);
-            console.log(response.request._redirectable);
-            console.log(response.data);
-            res.status(200).send(response.request.res);
+            console.log({"responseUrl" : response.request?.res?.responseUrl});
+            console.log({"_currentUrl" : response.request?._redirectable?._currentUrl});
+            console.log({"data" : response.data});
+            res.status(200).send({"url" : response.request?.res?.responseUrl});
         })
         .catch(function (error) {
             console.log("Error recived: ");
