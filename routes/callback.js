@@ -38,7 +38,7 @@ router.get('/', async function(req, res, next) {
 
         
         var query = global[req.query.login_hint];
-
+        global[req.query.login_hint] = undefined;
         var dataFull = {
             "email": query.email,
             "name": query.name,

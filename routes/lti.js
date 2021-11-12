@@ -8,7 +8,7 @@ router.post('/', async function(req, res, next) {
         var body = {
             client_id: "clientid01",
             iss: "https://kiskovi-test-server.herokuapp.com",
-            login_hint: "hint_pipeline"
+            login_hint: "hint_pipeline_" + Math.floor(Math.random() * 100),
         };
         var url = "https://api-prod-2belive.2belive.net/lti/login?company_id=312";
         var config = { headers: {"Content-Type" : "application/json","Accept": "application/json"} };
