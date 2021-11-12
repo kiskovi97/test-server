@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var axios = require('axios').default;
 
-router.get('/', async function(req, res, next) {
+router.post('/', async function(req, res, next) {
     try {
         console.log(req.query);
         var body = {
@@ -13,8 +13,8 @@ router.get('/', async function(req, res, next) {
         var url = "https://api-prod-2belive.2belive.net/lti/login?company_id=312";
         var config = { headers: {"Content-Type" : "application/json","Accept": "application/json"} };
 
-        console.log(global);
-        global[body.login_hint] = req.query;
+        console.log(req.data);
+        global[body.login_hint] = req.data;
 
         await axios.post(url, body, config)
         .then(function (response) {
