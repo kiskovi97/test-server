@@ -37,13 +37,13 @@ router.get('/', async function(req, res, next) {
         console.log(req.cookies);
 
         var dataFull = {
-            "email": "gergely.richter@bookrkids.hu",
-            "name": "Ms Jane Marie Doe",
-            "given_name": "Jane",
-            "family_name": "Doe",
+            "email": "gergo.kovacs@bookrkids.hu",
+            "name": "Kovács-Test Gergő",
+            "given_name": "Gergő",
+            "family_name": "Kovács-Test",
             "nonce": "` + req.query.nonce + `",
             "iss": "https://kiskovi-test-server.herokuapp.com",
-            "sub" : "gergely.richter@bookrkids.hu",
+            "sub" : "gergo.kovacs@bookrkids.hu",
             "https://purl.imsglobal.org/spec/lti/claim/deployment_id" : "deploymentid01",
             "aud": "clientid01",
             
