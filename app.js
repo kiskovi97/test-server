@@ -12,7 +12,7 @@ var ltiRouter = require('./routes/lti');
 var debuglog = require('./routes/debuglog');
 
 var app = express();
-var global = {};
+var global = { 'logs' : []};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/email', debuglog);
+app.use('/logs', debuglog);
 app.use('/lphash.txt', indexRouter);
 app.use('/users', usersRouter);
 app.use('/jwks', webjksRouter);

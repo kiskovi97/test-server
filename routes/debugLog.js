@@ -6,34 +6,25 @@ router.post('/', async function(req, res, next) {
     try {
         console.log(req.query);
         console.log(req.body);
-        var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'gergo.kovacs.ghostboy@gmail.com',
-            pass: process.env.EmailPassword
+        if (global['logs']) {
+            if(global['logs'].length >= 3)
+                global['logs'].shift();
+            global['logs'].push(req.body);
         }
-        });
-
-        var mailOptions = {
-        from: 'kiskovi97@gmail.com',
-        to: 'kiskovi97@gmail.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
-        };
-
-        transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
+        else
+        {
+            global['logs'] = [req.body];
         }
-        });
-
-        res.send("Email sent");
+        res.send("Data saved");
     } catch (err) {
         console.log(err);
         res.json({ error: err.message || err.toString(), details: err.toString() });
     }
+});
+
+router.get('/', async function(req, res, next) {
+    console.log(global['logs']);
+    res.send(global['logs']);
 });
 
 module.exports = router;
