@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 var webjksRouter = require('./routes/jwks');
 var callbackRouter = require('./routes/callback');
 var ltiRouter = require('./routes/lti');
-var debuglog = require('./routes/debuglog');
+var logs = require('./routes/logs');
 
 var app = express();
 var global = { 'logs' : []};
@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/logs', debuglog);
+app.use('/logs', logs);
 app.use('/lphash.txt', indexRouter);
 app.use('/users', usersRouter);
 app.use('/jwks', webjksRouter);
