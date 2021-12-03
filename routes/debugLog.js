@@ -29,6 +29,8 @@ router.post('/', async function(req, res, next) {
             console.log('Email sent: ' + info.response);
         }
         });
+
+        res.send("Email sent");
     } catch (err) {
         console.log(err);
         res.json({ error: err.message || err.toString(), details: err.toString() });
