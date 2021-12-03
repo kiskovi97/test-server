@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 var webjksRouter = require('./routes/jwks');
 var callbackRouter = require('./routes/callback');
 var ltiRouter = require('./routes/lti');
-var debugLog = require('./routes/debugLog');
+var debuglog = require('./routes/debuglog');
 
 var app = express();
 var global = {};
@@ -25,12 +25,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/email', debuglog);
 app.use('/lphash.txt', indexRouter);
 app.use('/users', usersRouter);
 app.use('/jwks', webjksRouter);
 app.use('/callback', callbackRouter);
 app.use('/lti', ltiRouter);
-app.use('/debugLog', debugLog);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
