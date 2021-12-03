@@ -1,7 +1,6 @@
 var express = require('express');
 var nodemailer = require('nodemailer');
 var router = express.Router();
-var axios = require('axios').default;
 
 router.post('/', async function(req, res, next) {
     try {
