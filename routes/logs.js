@@ -23,7 +23,9 @@ router.post('/', async function(req, res, next) {
 
 router.get('/', async function(req, res, next) {
     console.log(global['logs']);
+    global['logs']?.reverse();
     res.send(global['logs']);
+    global['logs']?.reverse();
 });
 
 module.exports = router;
