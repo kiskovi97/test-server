@@ -1,5 +1,4 @@
 var express = require('express');
-var nodemailer = require('nodemailer');
 var router = express.Router();
 
 router.post('/', async function(req, res, next) {
