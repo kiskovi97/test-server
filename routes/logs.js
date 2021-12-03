@@ -6,7 +6,7 @@ router.post('/', async function(req, res, next) {
         console.log(req.query);
         console.log(req.body);
         if (global['logs']) {
-            if(global['logs'].length >= 3)
+            if(global['logs'].length >= 100)
                 global['logs'].shift();
             global['logs'].push(req.body);
         }
